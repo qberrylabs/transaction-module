@@ -7,6 +7,7 @@ use Modules\CoreModule\Traits\UserTrait;
 use Modules\CoreModule\Traits\WalletTrait;
 use Modules\CoreModule\Entities\Notification;
 use Illuminate\Support\Facades\Session;
+use Modules\CoreModule\Enum\NotificationSettingEnum;
 
 class TransactionNotificationTemplate
 {
@@ -196,7 +197,7 @@ class TransactionNotificationTemplate
 
     public function sendNotification()
     {
-        
+
         $user=$this->user;
 
         $title=$this->notificationTemplate->title;
@@ -221,7 +222,7 @@ class TransactionNotificationTemplate
     public function sendNotificationToTokens($token,$title,$body,$type)
     {
         $firebaseToken = $token;
-        $SERVER_API_KEY = env('FIREBASE_SERVER_API_KEY');
+        $SERVER_API_KEY = NotificationSettingEnum::SERVER_API_KEY;
         //$SERVER_API_KEY = 'AAAAXF-71xs:APA91bH1ZH77AZiXqD5yiMqtCr6X9yv8d5zg_6CVIxRfIT-IUJ2S8fXtqhefpkIyfZ0emVvHVZZ_IPMF8fxl0JRMddK11I-4I5PJQt7yLSJdjFmXe0ItwsxJ6JiYWhoTDH1-el5n2zni';
 
         $data = [
