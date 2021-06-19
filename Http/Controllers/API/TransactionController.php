@@ -240,8 +240,8 @@ class TransactionController extends Controller
             $from_wallet_informations=Wallet::find($fromWalletId)->getUserInformations;
             $to_wallet_informations=Wallet::find($toWalletId)->getUserInformations;
 
-            $from_full_name=$from_wallet_informations->full_name;
-            $to_full_name=$to_wallet_informations->full_name;
+            $from_full_name=$from_wallet_informations->first_name.' '.$from_wallet_informations->last_name;
+            $to_full_name=$to_wallet_informations->first_name.' '.$to_wallet_informations->last_name;
 
             $to_email=$to_wallet_informations->email;
 
@@ -274,7 +274,7 @@ class TransactionController extends Controller
 
                         $old = ["sender_name", "recipient_name","from_amount","from_currency","to_amount","to_currency","fee_amount","exchange_rate","transaction_date","id"];
                         $new   = [
-                            $from_full_name,$to_full_name,$transactionAmount,
+                            $from_full_name , $to_full_name,$transactionAmount,
                             $currency, $toAmount,$toCurrency,
                             $transaction_amount_fee, $exchange_rate,$transaction->transaction_date,
                             $transaction->id
