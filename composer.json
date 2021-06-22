@@ -1,10 +1,10 @@
 {
-    "name": "nwidart/transactionmodule",
+    "name": "qberrylabs/transactionmodule",
     "description": "",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "qberrylabs Widart",
+            "email": "qberrylabs@gmail.com"
         }
     ],
     "extra": {
