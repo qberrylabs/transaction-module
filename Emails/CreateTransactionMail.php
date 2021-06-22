@@ -25,7 +25,6 @@ class CreateTransactionMail extends Mailable
         $this->transaction=$transaction;
     }
 
-
     public function build()
     {
         $type=$this->type;
