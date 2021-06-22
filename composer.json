@@ -1,5 +1,6 @@
 {
     "name": "qberrylabs/transactionmodule",
+    "type":"laravel-module",
     "description": "",
     "authors": [
         {
