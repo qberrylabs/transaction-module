@@ -5,13 +5,12 @@ namespace Modules\TransactionModule\Entities;
 use Modules\TransactionModule\Entities\TransactionStatus;
 use Modules\TransactionModule\Entities\TransactionType;
 use Modules\CoreModule\Entities\Wallet;
-use App\Traits\ClearsResponseCache;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
-    use ClearsResponseCache;
 
     protected $guarded = [];
 
