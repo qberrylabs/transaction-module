@@ -12,6 +12,7 @@ use App\Traits\WalletTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Modules\CoreModule\Entities\WithdrawFee;
 use Webpatser\Uuid\Uuid;
 
 class WithdrawaController extends Controller
@@ -41,8 +42,8 @@ class WithdrawaController extends Controller
         $toWallet=$this->getWalletByID($toWalletID);
         $toUser=$toWallet->getUserInformations;
         $toCurrency=$toWallet->currency;
-
-        $fee=$this->getFee('withdraw',$fromUser->country,$transactionAmount);
+        
+        $fee=$this->getWithdrawFee($toUser->roles()->first()->name,$fromUser->country,$transactionAmount);
 
         $transactionAmountAfterExchangeRate = $transactionAmount;
         $exchangeRate=0;
@@ -195,6 +196,22 @@ class WithdrawaController extends Controller
     private function getFee($transactionType,$country,$amount)
     {
         $fee=Fee::where('name',$transactionType)->where('country',$country)->first();
+        if($fee){
+            $feeType=$fee->fee_type;
+            if($feeType == "Percentage"){
+                return $amount * $fee->price;
+            }else{
+                return $fee->price;
+            }
+
+        }else{
+            return null;
+        }
+    }
+
+    private function getWithdrawFee($agentType,$country,$amount)
+    {
+        $fee=WithdrawFee::where('name',$agentType)->where('country',$country)->first();
         if($fee){
             $feeType=$fee->fee_type;
             if($feeType == "Percentage"){

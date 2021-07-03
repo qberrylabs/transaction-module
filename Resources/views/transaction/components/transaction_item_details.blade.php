@@ -44,8 +44,6 @@
 
                         $("#fee").text(fee);
                         $("#exchange-rate").text(exchangeRate);
-
-                        $("#note").text(note);
                         $("#transaction-date").text(transactionDate);
 
                         // alert("success");
@@ -76,7 +74,7 @@
                             </div>
                         </div>
                         <div class="col-sm-7">
-                            <h5 class="text-5 font-weight-400 m-3">Transaction Details
+                            <h5 class="text-5 font-weight-400 m-3">Transaction Details #<span id="transaction-ID" class="text-muted"></span>
                                 <button type="button" class="close font-weight-400" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                             </h5>
                             <hr>
@@ -110,14 +108,8 @@
                                     <span class="float-right text-1 ml-1 from-currency"></span>
                                 </p>
 
-                                <ul class="list-unstyled">
-                                    <li class="font-weight-500">Transaction ID:</li>
-                                    <li id="transaction-ID" class="text-muted"></li>
-                                </ul>
-                                <ul class="list-unstyled">
-                                    <li class="font-weight-500">Description:</li>
-                                    <li id="note" class="text-muted"></li>
-                                </ul>
+
+
 
                             </div>
                         </div>
